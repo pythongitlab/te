@@ -1,2 +1,14 @@
-13
-print('hello')
+import os
+import shutil
+import schedule
+import time
+
+def delete_folder():
+    folder_path = "C:/example_folder" # замените на путь к нужной папке
+    shutil.rmtree(folder_path)
+
+schedule.every().day.at("13:00").do(delete_folder)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
